@@ -37,4 +37,5 @@ cv2.imshow('org', org)              //Original Image
 cv2.imshow('gray', gr)              //GrayScale Image
 cv2.imshow('binary', b)             //Binary Image
 cv2.imshow('RGB + 20', rb)          //Constant_added_to_img
+cv2.imshow('gray + binary',gr+b)    //I1+I2(Gray+Binary)
 cv2.waitKey(0)
