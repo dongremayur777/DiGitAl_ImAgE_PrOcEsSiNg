@@ -8,11 +8,15 @@ imageWidth = len(org[0])
 
 gr = np.zeros((imageHeight, imageWidth), dtype=np.uint8)
 
+//Gray_Scale
+
 for i in range(0, imageHeight):
     for j in range(0, imageWidth):
         gr[i][j] = int(org[i][j][0] * 0.2126 + org[i][j][1] * 0.7152 + org[i][j][2] * 0.0722)
 
 b = np.zeros((imageHeight, imageWidth), dtype=np.uint8)
+
+//Binary
 
 for i in range(0, imageHeight):
     for j in range(0, imageWidth):
@@ -22,6 +26,8 @@ for i in range(0, imageHeight):
             b[i][j] = 0
 
 rb = np.zeros((imageHeight, imageWidth, 3), dtype=np.uint8)
+
+//Constant_Added
 
 for i in range(0, imageHeight):
     for j in range(0, imageWidth):
