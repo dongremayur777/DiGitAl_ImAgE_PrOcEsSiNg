@@ -8,7 +8,6 @@ imageWidth = len(org[0])
 
 gr = np.zeros((imageHeight, imageWidth), dtype=np.uint8)
 
-//Gray_Scale
 
 for i in range(0, imageHeight):
     for j in range(0, imageWidth):
@@ -33,9 +32,9 @@ for i in range(0, imageHeight):
     for j in range(0, imageWidth):
         rb[i][j] = org[i][j] + np.uint(20)
 
-cv2.imshow('org', org)              //Original Image
-cv2.imshow('gray', gr)              //GrayScale Image
-cv2.imshow('binary', b)             //Binary Image
-cv2.imshow('RGB + 20', rb)          //Constant_added_to_img
-cv2.imshow('gray + binary',gr+b)    //I1+I2(Gray+Binary)
+cv2.imshow('org', org)
+cv2.imshow('gray', gr)              
+cv2.imshow('binary', b)             
+cv2.imshow('RGB + 20', rb)         
+cv2.imshow('gray + binary',gr+b)    
 cv2.waitKey(0)
