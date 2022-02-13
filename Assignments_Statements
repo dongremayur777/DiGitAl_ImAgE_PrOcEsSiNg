@@ -16,3 +16,6 @@ Task: Create two images one with a white Shape at center and another with a Anot
 
 Assignment4:
 Task---> read a color image and display its reddish,greenisg and bluish image
+
+Assignment5:
+Task---> Read a color image and perform Histogram equalisation on it.
