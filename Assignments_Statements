@@ -19,3 +19,9 @@ Task---> read a color image and display its reddish,greenisg and bluish image
 
 Assignment5:
 Task---> Read a color image and perform Histogram equalisation on it.
+
+Assignment6:
+Task---> Read a color image and perform Contrast Enhancement on it.
+
+Assignment7:
+Task---> Read a color image and perform bit slicing for 8 planes on it.
