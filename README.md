@@ -1,5 +1,8 @@
 ## Digital_Image_Processing
+
 Lab_Reports_DIP_IIITN
+
+
 #Assignment1:
 Task1-->Read a color image and convert it into gray scale image without using inbulit function.
 Task2-->Convert the pixel of gray scale image to either 1 or 0.
