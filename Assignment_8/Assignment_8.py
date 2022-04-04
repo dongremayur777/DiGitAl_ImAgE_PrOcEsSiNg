@@ -32,7 +32,7 @@ def hist_plot(img):
 	return (r, count)
 
 
-img = cv2.imread('/Users/mayurdongre/Downloads/Divya.jpeg', 0)
+img = cv2.imread('/Users/mayurdongre/Downloads/Mayur.jpeg', 0)
 
 # To ascertain total numbers of rows and
 # columns of the image, size of the image
@@ -57,4 +57,4 @@ plt.ylabel('number of pixels')
 plt.title('Histogram of the stretched image')
 
 # Storing stretched Image
-cv2.imwrite('/Users/mayurdongre/Downloads/Divya2.jpeg', img_stretch)
+cv2.imwrite('/Users/mayurdongre/Downloads/Mayur1.jpeg', img_stretch)
