@@ -1,29 +1,22 @@
-##DIP
-#Assignment1:
-Task1-->Read a color image and convert it into gray scale image without using inbulit function.
-Task2-->Convert the pixel of gray scale image to either 1 or 0.
-Task3-->Add gray image and image with pixels either 1 or 0 and add 20 to gray scale image.
-Performe the task and display the output images. 
+# Import necessary modules
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
 
+# Loading data
+irisData = load_iris()
 
-#Assignment2:
-Task-->Read a color image,convert the color image to gray scale and dispaly both images.
-Make some part of that gray scale image total black and display it.Now subtract this to images and display output image.
+# Create feature and target arrays
+X = irisData.data
+y = irisData.target
 
+# Split into training and test set
+X_train, X_test, y_train, y_test = train_test_split(
+			X, y, test_size = 0.2, random_state=42)
 
-#Assignment3:
-Task: Create two images one with a white Shape at center and another with a Another white Shape at center and performe all logical gate operations on both images and display the output images.
+knn = KNeighborsClassifier(n_neighbors=7)
 
+knn.fit(X_train, y_train)
 
-#Assignment4:
-Task---> read a color image and display its reddish,greenisg and bluish image
-
-#Assignment5:
-Task---> Read a color image and perform Histogram equalisation on it.
-
-#Assignment6:
-Task---> Read a color image and perform Contrast Enhancement on it.
-
-#Assignment7:
-Task---> Read a color image and perform bit slicing for 8 planes on it.
-
+# Predict on dataset which model has not seen before
+print(knn.predict(X_test))
