@@ -1,29 +1,59 @@
-##DIP
-#Assignment1:
-Task1-->Read a color image and convert it into gray scale image without using inbulit function.
-Task2-->Convert the pixel of gray scale image to either 1 or 0.
-Task3-->Add gray image and image with pixels either 1 or 0 and add 20 to gray scale image.
-Performe the task and display the output images. 
+# import packages
+import matplotlib.pyplot as plt
+from skimage import exposure
+from skimage.exposure import match_histograms
+import cv2
+
+# reading main image
+img1 = cv2.imread("img.jpeg")
+
+# checking the number of channels
+print('No of Channel is: ' + str(img1.ndim))
+
+# reading reference image
+img2 = cv2.imread("2Fw13.jpeg")
+
+# checking the number of channels
+print('No of Channel is: ' + str(img2.ndim))
+
+image = img1
+reference = img2
+
+matched = match_histograms(image, reference ,
+						multichannel=True)
 
 
-#Assignment2:
-Task-->Read a color image,convert the color image to gray scale and dispaly both images.
-Make some part of that gray scale image total black and display it.Now subtract this to images and display output image.
+fig, (ax1, ax2, ax3) = plt.subplots(nrows=1, ncols=3,
+									figsize=(8, 3),
+									sharex=True, sharey=True)
 
+for aa in (ax1, ax2, ax3):
+	aa.set_axis_off()
 
-#Assignment3:
-Task: Create two images one with a white Shape at center and another with a Another white Shape at center and performe all logical gate operations on both images and display the output images.
+ax1.imshow(image)
+ax1.set_title('Source')
+ax2.imshow(reference)
+ax2.set_title('Reference')
+ax3.imshow(matched)
+ax3.set_title('Matched')
 
+plt.tight_layout()
+plt.show()
 
-#Assignment4:
-Task---> read a color image and display its reddish,greenisg and bluish image
+fig, axes = plt.subplots(nrows=3, ncols=3, figsize=(8, 8))
 
-#Assignment5:
-Task---> Read a color image and perform Histogram equalisation on it.
+for i, img in enumerate((image, reference, matched)):
+	for c, c_color in enumerate(('red', 'green', 'blue')):
+		img_hist, bins = exposure.histogram(img[..., c],
+											source_range='dtype')
+		axes[c, i].plot(bins, img_hist / img_hist.max())
+		img_cdf, bins = exposure.cumulative_distribution(img[..., c])
+		axes[c, i].plot(bins, img_cdf)
+		axes[c, 0].set_ylabel(c_color)
 
-#Assignment6:
-Task---> Read a color image and perform Contrast Enhancement on it.
+axes[0, 0].set_title('Source')
+axes[0, 1].set_title('Reference')
+axes[0, 2].set_title('Matched')
 
-#Assignment7:
-Task---> Read a color image and perform bit slicing for 8 planes on it.
-
+plt.tight_layout()
+plt.show()
