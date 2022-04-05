@@ -59,26 +59,22 @@ Task---> Read a color image and perform Run Length Encoding on it.
 
 
 ## Assignment13:
-Task---> Read a color image and perform Toboggan Algorithm on it.
-
-
-## Assignment14:
 Task---> Read a color image and perform Watermark Algorithm on it.
 
 
-## Assignment15:
+## Assignment14:
 Task---> Read a color image and perform Image Detection on it.
 
-## Assignment16:
+## Assignment15:
 Task---> Read a color image and perform ZicZacDCT on it.
 
-## Assignment17:
+## Assignment16:
 Task---> Read a color image and perform Edge Detection on it.
 
-## Assignment18:
+## Assignment17:
 Task---> Read a color image and perform Delta Modulation on it.
 
-## Assignment19:
+## Assignment18:
 Task---> Read a color image and perform Filter Designing on it.
 
 
