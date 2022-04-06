@@ -1,29 +1,75 @@
-##DIP
-#Assignment1:
-Task1-->Read a color image and convert it into gray scale image without using inbulit function.
-Task2-->Convert the pixel of gray scale image to either 1 or 0.
-Task3-->Add gray image and image with pixels either 1 or 0 and add 20 to gray scale image.
-Performe the task and display the output images. 
+import cv2
+
+img = cv2.imread('diego-jimenez-A-NVHPka9Rk-unsplash.JPG')
+
+watermark = cv2.imread("Watermark.JPG")
 
 
-#Assignment2:
-Task-->Read a color image,convert the color image to gray scale and dispaly both images.
-Make some part of that gray scale image total black and display it.Now subtract this to images and display output image.
 
 
-#Assignment3:
-Task: Create two images one with a white Shape at center and another with a Another white Shape at center and performe all logical gate operations on both images and display the output images.
+percent_of_scaling = 20
+
+new_width = int(img.shape[1] * percent_of_scaling/100)
+
+new_height = int(img.shape[0] * percent_of_scaling/100)
+
+new_dim = (new_width, new_height)
+
+resized_img = cv2.resize(img, new_dim, interpolation=cv2.INTER_AREA)
 
 
-#Assignment4:
-Task---> read a color image and display its reddish,greenisg and bluish image
 
-#Assignment5:
-Task---> Read a color image and perform Histogram equalisation on it.
 
-#Assignment6:
-Task---> Read a color image and perform Contrast Enhancement on it.
+wm_scale = 40
 
-#Assignment7:
-Task---> Read a color image and perform bit slicing for 8 planes on it.
+wm_width = int(watermark.shape[1] * wm_scale/100)
 
+wm_height = int(watermark.shape[0] * wm_scale/100)
+
+wm_dim = (wm_width, wm_height)
+
+
+
+
+resized_wm = cv2.resize(watermark, wm_dim, interpolation=cv2.INTER_AREA)
+
+
+
+
+h_img, w_img, _ = resized_img.shape
+
+center_y = int(h_img/2)
+
+center_x = int(w_img/2)
+
+h_wm, w_wm, _ = resized_wm.shape
+
+top_y = center_y - int(h_wm/2)
+
+left_x = center_x - int(w_wm/2)
+
+bottom_y = top_y + h_wm
+
+right_x = left_x + w_wm
+
+
+
+
+roi = resized_img[top_y:bottom_y, left_x:right_x]
+
+result = cv2.addWeighted(roi, 1, resized_wm, 0.3, 0)
+
+resized_img[top_y:bottom_y, left_x:right_x] = result
+
+
+
+
+filename = 'Watermakred_Image.jpg'
+
+cv2.imwrite(filename, resized_img)
+
+cv2.imshow("Resized Input Image", resized_img)
+
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
